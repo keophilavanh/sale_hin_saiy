@@ -1,6 +1,6 @@
 <?php  
  //fetch.php  
- include_once('../../../../conn.php');  
+ include_once '../../../../conn.php';  
  if(isset($_POST["id"]))  
  {  
       $query = "SELECT o.sup_id,s.sup_name,(SELECT sum(`total`) FROM `tb_order_detail` WHERE `ord_id`='".$_POST["id"]."') as total

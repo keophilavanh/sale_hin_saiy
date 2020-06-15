@@ -1,7 +1,8 @@
 <?php
- include_once('../../../session.php');
- include_once('../navbar.php');
- include_once('../../../conn.php');
+ 
+ include '../../../session.php';
+ include '../../../conn.php';
+ include '../navbar.php';
  
  
 

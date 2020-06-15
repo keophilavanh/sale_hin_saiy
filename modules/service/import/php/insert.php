@@ -1,6 +1,6 @@
 ﻿
 <?php
-include_once('../../../../conn.php');  
+include_once '../../../../conn.php';  
 session_start();
 if(!empty($_POST))
 {

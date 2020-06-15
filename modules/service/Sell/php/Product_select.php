@@ -1,6 +1,6 @@
 <?php  
  //fetch.php 
- include_once('../../../../conn.php');
+ include_once '../../../../conn.php';
   
    
     $query = "SELECT * FROM tb_product WHERE cat_id=".$_POST["id"];  

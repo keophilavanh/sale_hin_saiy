@@ -1,6 +1,8 @@
 <?php
- include_once('../../../session.php');
- include_once('../navbar.php');
+
+ include '../../../session.php';
+ include '../navbar.php';
+ 
 ?>
 <!doctype html>
 <html lang="en">

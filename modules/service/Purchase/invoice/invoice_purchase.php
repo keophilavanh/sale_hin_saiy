@@ -1,6 +1,6 @@
 <?php  
-    include_once('../../../../conn.php');
-    require_once('../../../tcpdf/tcpdf.php');  
+    include_once '../../../../conn.php';
+    require_once '../../../tcpdf/tcpdf.php';  
     session_start();
       $obj_pdf = new TCPDF('P', PDF_UNIT, array(148, 210), true, 'UTF-8', false);  
       $obj_pdf->SetCreator(PDF_CREATOR);  

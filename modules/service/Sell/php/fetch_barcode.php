@@ -1,6 +1,6 @@
 <?php  
  //fetch.php  
- include_once('../../../../conn.php');  
+ include_once '../../../../conn.php';  
  if(isset($_POST["id"]))  
  {  
       $query = "SELECT * FROM tb_product WHERE pro_barcode = '".$_POST["id"]."'";  

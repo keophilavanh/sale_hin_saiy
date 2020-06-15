@@ -1,7 +1,7 @@
 
 
  <?php
- include_once('../../../../conn.php');
+ include_once '../../../../conn.php';
  $columns = array('ord_id', 'ord_date');
  //$sql = "SELECT * FROM tbl_sample ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY ";
 
