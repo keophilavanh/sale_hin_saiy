@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 14, 2019 at 03:49 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 15, 2020 at 12:54 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_minimark`
+-- Database: `sale_hin_saiy`
 --
 
 -- --------------------------------------------------------
@@ -26,11 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `tb_category`
 --
 
+DROP TABLE IF EXISTS `tb_category`;
 CREATE TABLE IF NOT EXISTS `tb_category` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(25) NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_category`
@@ -47,23 +50,25 @@ INSERT INTO `tb_category` (`cat_id`, `cat_name`) VALUES
 -- Table structure for table `tb_customer`
 --
 
+DROP TABLE IF EXISTS `tb_customer`;
 CREATE TABLE IF NOT EXISTS `tb_customer` (
   `cus_id` int(11) NOT NULL AUTO_INCREMENT,
   `cus_fname` varchar(25) NOT NULL,
   `cus_lname` varchar(25) DEFAULT NULL,
   `cus_phone` varchar(13) DEFAULT NULL,
   `cus_address` varchar(100) DEFAULT NULL,
+  `cus_car_number` varchar(6) NOT NULL,
   PRIMARY KEY (`cus_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_customer`
 --
 
-INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`) VALUES
-(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad'),
-(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ'),
-(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ');
+INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`, `cus_car_number`) VALUES
+(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad', '2222'),
+(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ', '7051'),
+(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ', '9999');
 
 -- --------------------------------------------------------
 
@@ -71,6 +76,7 @@ INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus
 -- Table structure for table `tb_employee`
 --
 
+DROP TABLE IF EXISTS `tb_employee`;
 CREATE TABLE IF NOT EXISTS `tb_employee` (
   `emp_id` int(11) NOT NULL AUTO_INCREMENT,
   `emp_fname` varchar(25) NOT NULL,
@@ -81,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `tb_employee` (
   `password` varchar(25) NOT NULL,
   `permission` varchar(25) NOT NULL,
   PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_employee`
@@ -97,6 +103,7 @@ INSERT INTO `tb_employee` (`emp_id`, `emp_fname`, `emp_lname`, `emp_phone`, `emp
 -- Table structure for table `tb_expire_product`
 --
 
+DROP TABLE IF EXISTS `tb_expire_product`;
 CREATE TABLE IF NOT EXISTS `tb_expire_product` (
   `exp_id` int(11) NOT NULL,
   `exp_date` datetime NOT NULL,
@@ -119,6 +126,7 @@ INSERT INTO `tb_expire_product` (`exp_id`, `exp_date`, `emp_id`) VALUES
 -- Table structure for table `tb_expire_product_detail`
 --
 
+DROP TABLE IF EXISTS `tb_expire_product_detail`;
 CREATE TABLE IF NOT EXISTS `tb_expire_product_detail` (
   `exp_id` int(11) NOT NULL,
   `pro_barcode` varchar(15) NOT NULL,
@@ -145,6 +153,7 @@ INSERT INTO `tb_expire_product_detail` (`exp_id`, `pro_barcode`, `quality`, `pri
 -- Table structure for table `tb_import`
 --
 
+DROP TABLE IF EXISTS `tb_import`;
 CREATE TABLE IF NOT EXISTS `tb_import` (
   `imp_id` int(11) NOT NULL,
   `imp_date` datetime NOT NULL,
@@ -186,6 +195,7 @@ INSERT INTO `tb_import` (`imp_id`, `imp_date`, `ord_id`, `emp_id`) VALUES
 -- Table structure for table `tb_import_detail`
 --
 
+DROP TABLE IF EXISTS `tb_import_detail`;
 CREATE TABLE IF NOT EXISTS `tb_import_detail` (
   `imp_id` int(11) NOT NULL,
   `pro_barcode` varchar(15) NOT NULL,
@@ -240,6 +250,7 @@ INSERT INTO `tb_import_detail` (`imp_id`, `pro_barcode`, `quality`) VALUES
 -- Table structure for table `tb_order`
 --
 
+DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE IF NOT EXISTS `tb_order` (
   `ord_id` int(11) NOT NULL,
   `ord_date` datetime NOT NULL,
@@ -279,6 +290,7 @@ INSERT INTO `tb_order` (`ord_id`, `ord_date`, `ord_status`, `sup_id`, `emp_id`, 
 -- Table structure for table `tb_order_detail`
 --
 
+DROP TABLE IF EXISTS `tb_order_detail`;
 CREATE TABLE IF NOT EXISTS `tb_order_detail` (
   `ord_id` int(11) NOT NULL,
   `pro_barcode` varchar(15) NOT NULL,
@@ -327,6 +339,7 @@ INSERT INTO `tb_order_detail` (`ord_id`, `pro_barcode`, `quality`, `price`, `tot
 -- Table structure for table `tb_product`
 --
 
+DROP TABLE IF EXISTS `tb_product`;
 CREATE TABLE IF NOT EXISTS `tb_product` (
   `pro_barcode` varchar(15) NOT NULL,
   `pro_name` varchar(25) NOT NULL,
@@ -359,6 +372,7 @@ INSERT INTO `tb_product` (`pro_barcode`, `pro_name`, `quality`, `image`, `buy_pr
 -- Table structure for table `tb_sell`
 --
 
+DROP TABLE IF EXISTS `tb_sell`;
 CREATE TABLE IF NOT EXISTS `tb_sell` (
   `sel_id` int(11) NOT NULL,
   `sel_date` datetime NOT NULL,
@@ -386,7 +400,11 @@ INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`) VALUES
 (10, '2019-04-23 12:51:31', 3, 1),
 (11, '2019-04-23 12:54:37', 3, 1),
 (12, '2019-04-23 20:21:20', 3, 1),
-(13, '2019-04-24 20:54:19', 3, 1);
+(13, '2019-04-24 20:54:19', 3, 1),
+(14, '2020-06-15 18:52:36', 3, 1),
+(15, '2020-06-15 18:53:21', 3, 1),
+(16, '2020-06-15 19:03:17', 3, 1),
+(17, '2020-06-15 19:38:58', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -394,6 +412,7 @@ INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`) VALUES
 -- Table structure for table `tb_sell_detail`
 --
 
+DROP TABLE IF EXISTS `tb_sell_detail`;
 CREATE TABLE IF NOT EXISTS `tb_sell_detail` (
   `sel_id` int(11) NOT NULL,
   `pro_barcode` varchar(15) NOT NULL,
@@ -432,7 +451,12 @@ INSERT INTO `tb_sell_detail` (`sel_id`, `pro_barcode`, `quality`, `price`, `tota
 (12, 'ffff', 1, 6000, 6000),
 (13, '5555', 1, 30000, 30000),
 (13, 'ffff', 1, 6000, 6000),
-(13, 'testdd', 1, 80000, 80000);
+(13, 'testdd', 1, 80000, 80000),
+(14, '5555', 2, 30000, 60000),
+(15, '5555', 1, 30000, 30000),
+(16, '5555', 1, 30000, 30000),
+(16, '98799', 1, 5000, 5000),
+(17, '5555', 1, 30000, 30000);
 
 -- --------------------------------------------------------
 
@@ -440,13 +464,14 @@ INSERT INTO `tb_sell_detail` (`sel_id`, `pro_barcode`, `quality`, `price`, `tota
 -- Table structure for table `tb_supplier`
 --
 
+DROP TABLE IF EXISTS `tb_supplier`;
 CREATE TABLE IF NOT EXISTS `tb_supplier` (
   `sup_id` int(11) NOT NULL AUTO_INCREMENT,
   `sup_name` varchar(25) NOT NULL,
   `sup_phone` varchar(13) DEFAULT NULL,
   `sup_address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`sup_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_supplier`
@@ -462,11 +487,12 @@ INSERT INTO `tb_supplier` (`sup_id`, `sup_name`, `sup_phone`, `sup_address`) VAL
 -- Table structure for table `tb_unit`
 --
 
+DROP TABLE IF EXISTS `tb_unit`;
 CREATE TABLE IF NOT EXISTS `tb_unit` (
   `uni_id` int(11) NOT NULL AUTO_INCREMENT,
   `uni_name` varchar(25) NOT NULL,
   PRIMARY KEY (`uni_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_unit`
@@ -544,6 +570,7 @@ ALTER TABLE `tb_sell`
 ALTER TABLE `tb_sell_detail`
   ADD CONSTRAINT `tb_sell_detail_ibfk_1` FOREIGN KEY (`sel_id`) REFERENCES `tb_sell` (`sel_id`),
   ADD CONSTRAINT `tb_sell_detail_ibfk_2` FOREIGN KEY (`pro_barcode`) REFERENCES `tb_product` (`pro_barcode`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
