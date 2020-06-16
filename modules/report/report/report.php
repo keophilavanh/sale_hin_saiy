@@ -21,6 +21,7 @@
     <script src="../../../js/bootadmin.min.js"></script>
     <script src="../../../js/datatables.min.js"></script>
     <script src="../../../js/moment.min.js"></script>
+    <script src="../../../js/canvasjs.min.js"></script>
  <!--    <script src="../../js/fullcalendar.min.js"></script> -->
    
 
@@ -52,6 +53,22 @@
 
 <div class="content p-4">
         <div class="row">
+
+            <div class="col-md-12 mt-3">
+              <div class="card ">
+                    <div class="card-header bg-white font-weight-bold">        
+                      
+                       
+                      <h4>ຂໍ້ມູນ Chart</h4>
+                      
+                      
+                    </div>
+                    <div class="card-body">
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-6 mt-3">
               <div class="card ">
                     <div class="card-header bg-white font-weight-bold">        
@@ -82,24 +99,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mt-3">
-              <div class="card ">
-                    <div class="card-header bg-white font-weight-bold">        
-                      
-                       
-                      <h4>ຂໍ້ມູນ Chart</h4>
-                      
-                      
-                    </div>
-                    <div class="card-body">
-                        <div align="right">   
-                        <button type="button" class="btn btn-success" title="ເພີ້ມ" name="add" id="add" >ເພີ້ມຂໍ້ມູນປະເພດສິນຄ້າ</button>
-                        
-                        <h1> </h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
 
                
         </div>       
@@ -112,13 +112,64 @@
     
 </div>
 
+
   
   
  
 
   
 <script>
+
+        window.onload = function() {
+
+            
+           
+            
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        theme: "light2",
+                        title:{
+                            text: ""
+                        },
+                        axisY: {
+                            title: ""
+                        },
+                        data: [{
+                            type: "column",
+                            yValueFormatString: "#,##0.## ກີບ",
+                            dataPoints: []
+                        }]
+                        });
+                        chart.render();
+
+
+
+            $.ajax({
+                    url:"chart_data.php",
+                    method:"POST",
+                    dataType:"json",
+                    success:function(data){
+
+                            console.log(data);
+                        
+                            chart.options.data[0].dataPoints = data;
+                            chart.render();
+                        
+                      
+                    }
+                });
+                       
+        }
+
+        
+          
+
+        
         $(document).ready(function () {
+
+
+            
 
             $(document).on('click', '.back', function(){  
                 window.location.replace('../../../main.php');
@@ -132,7 +183,8 @@
                     $('#top_sale').html(data);
                     }
                 });
-
+            
+           
             $.ajax({
                     url:"top_employee_selling.php",
                     method:"POST",
@@ -142,129 +194,9 @@
                     }
                 });
 
-            $(".js-example-tags").select2({
-                tags: true
-            });
-
-            $('.js-example-tags').on("keydown", function(e) {
-            
-                alert("The paragraph was clicked.");
-
-            });
-            
-            $("#select").keypress(function(){
-                alert("The paragraph was clicked.");
-                
-            });
-            
-            
-            var dataTable = $('#example').DataTable({
-                "processing":true,
-                "serverSide":true,
-                "order":[],
-                "ajax":{
-                url:"php/User/select.php",
-                type:"POST"
-                }
-
-            });
-
-            
-
-            $('#add').click(function () {
                
-                $('#add_data_Modal').modal('show');
-                $('#insert').val("ເພີ້ມລາຍການ");
-                $('#insert_form')[0].reset();
-                $('#status').val('Insert');
-                  
-            });
 
-
-
-
-            $('#linkClose').click(function () {
-                $('#myAlert').hide('fade');
-            });
-
-
-             $('#insert_form').on("submit", function(event){  
-            event.preventDefault();  
-             if($('#Name').val() == '')  
-            {  
-                $('#myAlert').show('fade');  
-            }
-            else if($('#password').val() == '')  
-            {  
-                $('#myAlert').show('fade');  
-            }  
             
-   
-            else  
-            {  
-            $.ajax({  
-                url:"php/User/insert.php",  
-                method:"POST",  
-                data:$('#insert_form').serialize(),  
-                beforeSend:function(){  
-                $('#insert').val("ເພີ້ມລາຍການ");  
-                },  
-                success:function(data){  
-                $('#insert_form')[0].reset();  
-                $('#add_data_Modal').modal('hide');  
-                dataTable.ajax.reload();
-                
-                }  
-            }); 
-                
-            }  
-            });
-            
-            $(document).on('click', '.edit_data', function(){  
-                var employee_id = $(this).attr("id");  
-                
-                $.ajax({  
-                    url:"php/User/fetch.php",  
-                    method:"POST",  
-                    data:{employee_id:employee_id},  
-                    dataType:"json",  
-                    success:function(data){  
-                         
-                        $('#Name').val(data.Name);  
-                        $('#password').val(data.password); 
-                        $('#employee_id').val(data.id);  
-                        $('#type').val(data.permistion);
-                       
-                        $('#add_data_Modal').modal('show');
-                        $('#insert').val("ແກ້ໄຂລາຍການ");
-                        $('#status').val('Update');  
-                    }  
-                });  
-            });
-
-            $(document).on('click', '.delete_data', function(){  
-                var employee_id = $(this).attr("id");  
-                
-                $.ajax({  
-                    url:"php/User/fetch.php",  
-                    method:"POST",  
-                    data:{employee_id:employee_id},  
-                    dataType:"json",  
-                    success:function(data){  
-                        $('#Name').val(data.Name);  
-                        $('#password').val(data.password); 
-                        $('#employee_id').val(data.id);  
-                        $('#type').val(data.permistion);
-                       
-                        
-                        $('#employee_id').val(data.id);  
-                        $('#insert').val("ລົບລາຍການ");  
-                        $('#status').val('Delete'); 
-                        $('#add_data_Modal').modal('show');
-                    }
-                });
-                dataTable.ajax.reload();  
-            }); 
 
 
             

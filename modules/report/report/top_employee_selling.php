@@ -42,6 +42,13 @@ if ($total_count > 0){
 }
 else{
 
+    $data_table .= '<tr>
+                       
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"></td>
+                            
+                        </tr>';
 
 
 }
