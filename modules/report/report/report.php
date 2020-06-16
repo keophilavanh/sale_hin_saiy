@@ -50,6 +50,60 @@
         echo $navbar;
     ?>
 
+<div class="content p-4">
+        <div class="row">
+            <div class="col-md-6 mt-3">
+              <div class="card ">
+                    <div class="card-header bg-white font-weight-bold">        
+                      
+                       
+                      <h4>ຂໍ້ມູນສິນຄ້າຂາຍດີ</h4>
+                      
+                      
+                    </div>
+                    <div class="card-body" id="top_sale">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt-3 ">
+              <div class="card ">
+                    <div class="card-header bg-white font-weight-bold">        
+                      
+                       
+                      <h4>ຂໍ້ມູນພະນັກງານດີເດັ່ນ</h4>
+                      
+                      
+                    </div>
+                    <div class="card-body" id="top_employee">
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt-3">
+              <div class="card ">
+                    <div class="card-header bg-white font-weight-bold">        
+                      
+                       
+                      <h4>ຂໍ້ມູນ Chart</h4>
+                      
+                      
+                    </div>
+                    <div class="card-body">
+                        <div align="right">   
+                        <button type="button" class="btn btn-success" title="ເພີ້ມ" name="add" id="add" >ເພີ້ມຂໍ້ມູນປະເພດສິນຄ້າ</button>
+                        
+                        <h1> </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+               
+        </div>       
+
         
 
             
@@ -71,11 +125,20 @@
             });
 
             $.ajax({
-                    url:"fetch_select.php",
+                    url:"top_selling.php",
                     method:"POST",
                     dataType:"text",
                     success:function(data){
-                    $('#select').html(data);
+                    $('#top_sale').html(data);
+                    }
+                });
+
+            $.ajax({
+                    url:"top_employee_selling.php",
+                    method:"POST",
+                    dataType:"text",
+                    success:function(data){
+                    $('#top_employee').html(data);
                     }
                 });
 

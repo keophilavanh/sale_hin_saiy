@@ -62,10 +62,10 @@ if ($total_count > 0){
             $image=$row["image"];
         }
 
-        $sub_array[] = '<div class="card" style="width: 70px; height: 80px;">
-                    <img class="card-img-top" height="80" width="70" src="images/'.$image.'" alt="Card image cap">
-                </div>
-        ';
+        // $sub_array[] = '<div class="card" style="width: 70px; height: 80px;">
+        //             <img class="card-img-top" height="80" width="70" src="images/'.$image.'" alt="Card image cap">
+        //         </div>
+        // ';
 
         $sub_array[] = $row["pro_barcode"];
         $sub_array[] = $row["pro_name"];
@@ -78,7 +78,7 @@ if ($total_count > 0){
   
   
         $sub_array[] = '
-                        <a href="#" id="'.$row["pro_barcode"].'" class="btn btn-pill btn-secondary Upload" data-toggle="tooltip" title="Upload"><i class="fas fa-images"></i></a> 
+                    <!--    <a href="#" id="'.$row["pro_barcode"].'" class="btn btn-pill btn-secondary Upload" data-toggle="tooltip" title="Upload"><i class="fas fa-images"></i></a> -->
                         <a href="#" id="'.$row["pro_barcode"].'" class="btn btn-pill btn-primary edit_data" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-edit"></i></a> 
                         <a href="#" id="'.$row["pro_barcode"].'" class="btn btn-icon btn-pill btn-danger delete_data" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-trash"></i></a>';
        
@@ -89,7 +89,7 @@ if ($total_count > 0){
 else{
 
         $sub_array = array();
-        $sub_array[] = " ";
+        // $sub_array[] = " ";
         $sub_array[] = " ";
         $sub_array[] = " ";
         $sub_array[] = " ";

@@ -10,7 +10,7 @@ if( $_SESSION['permission'] == "Admin"){
         
         <li>  
             
-                       
+            <li><a href="../report/report.php"><i class="fa fa-fw fa-tachometer-alt"></i> ເດດບອດ</a></li>
             <li><a href="../report_sale/report_sale.php"><i class="fas fa-chart-pie"></i> ລາຍງານການຂາຍສິນຄ້າ</a></li>
             <li><a href="../report_product/report_product.php" target="_blank"><i class="fas fa-chart-pie"></i> ລາຍງານສິນຄ້າໃນຮ້ານ</a></li>
             <!--    <li><a href="../report_product_minimum/report.php" target="_blank"><i class="fas fa-chart-pie"></i> ລາຍງານສິນຄ້າໃກ້ໝົດ</a></li>
