@@ -21,7 +21,8 @@
     <script src="../../../js/bootadmin.min.js"></script>
     <script src="../../../js/datatables.min.js"></script>
     <script src="../../../js/moment.min.js"></script>
-    <script src="../../../js/canvasjs.min.js"></script>
+    <script src="../../../js/chart.min.js"></script>
+    <!-- <script src="../../../js/asyc.js"></script> -->
  <!--    <script src="../../js/fullcalendar.min.js"></script> -->
    
 
@@ -52,8 +53,15 @@
     ?>
 
 <div class="content p-4">
-        <div class="row">
 
+        
+        <div class="row">
+            <div class="ml-3">
+                <button type="button" id="send_data" class="btn btn-primary  btn-lg "> <i class="fas fa-cloud-upload-alt"></i> ອັບໂຫລດຂໍ້ມູນ</button>
+            </div> 
+            <div id="loading" class="ml-3 p-2 d-none" >
+                <i class="fas fa-spinner fa-pulse fa-lg"></i> Loading...
+            </div> 
             <div class="col-md-12 mt-3">
               <div class="card ">
                     <div class="card-header bg-white font-weight-bold">        
@@ -192,6 +200,27 @@
                     success:function(data){
                     $('#top_employee').html(data);
                     }
+                });
+
+
+                $(document).on('click', '#send_data', function(){  
+    
+                    
+                    document.getElementById("loading").classList.remove("d-none");
+
+
+                    $.ajax({  
+                        url:"../upload.php",  
+                        method:"POST",  
+                        data:{},  
+                        dataType:"text",  
+                        success:function(data){
+                            console.log(data);  
+                            document.getElementById("loading").classList.add("d-none");
+                        }  
+                    });  
+        
+  
                 });
 
                

@@ -22,6 +22,7 @@
     <script src="../../../js/datatables.min.js"></script>
     <script src="../../../js/sweetalert.min.js"></script>
     <script src="../../../jq/jquery.datetimepicker.full.js"></script>
+    <script src="../../../js/asyc.js"></script>
     
 
 
