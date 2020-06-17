@@ -112,17 +112,17 @@
 
              $(document).on('click', '.manag', function(){  
                  
-                window.location.replace('modules/manag/manag/manag.php');
+                window.location.replace('codes/manag/manag/manag.php');
                   
             });
             $(document).on('click', '.service', function(){  
                  
-                 window.location.replace('modules/service/Service/service.php');
+                 window.location.replace('codes/service/Service/service.php');
                    
              });
              $(document).on('click', '.report', function(){  
                  
-                 window.location.replace('modules/report/report/report.php');
+                 window.location.replace('codes/report/report/report.php');
                    
              });
 
