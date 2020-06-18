@@ -134,6 +134,15 @@
                             </div>
                             <div class="form-group row">
                                     
+                                    <div class="col-sm-5">
+                                        <label  >ບັດປະຈຳຕົວ</label>
+                                        <input type="text" class="form-control" name="cart" id="cart" >
+                                    </div>
+
+                                   
+                            </div>
+                            <div class="form-group row">
+                                    
                                    
                                     <div class="col-sm-12">
                                             <label >ທີຢູ່ປັດຈຸບັນ</label>
@@ -255,6 +264,11 @@
                 $('#myAlert').show('fade');  
             } 
 
+            else if($('#cart').val() == '')  
+            {  
+                $('#myAlert').show('fade');  
+            } 
+
             else if($('#Address').val() == '')  
             {  
                 $('#myAlert').show('fade');  
@@ -295,7 +309,8 @@
                         $('#lastName').val(data.cus_lname); 
                         $('#phone').val(data.cus_phone); 
                         $('#car_number').val(data.cus_car_number); 
-                        $('#Address').val(data.cus_address); 
+                        $('#Address').val(data.cus_address);
+                        $('#cart').val(data.cus_cart); 
                       
 
                         $('#employee_id').val(data.cus_id);  

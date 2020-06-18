@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `tb_customer` (
   `cus_phone` varchar(13) DEFAULT NULL,
   `cus_address` varchar(100) DEFAULT NULL,
   `cus_car_number` varchar(6) NOT NULL,
+  `cus_cart` varchar(20) NULL,
   PRIMARY KEY (`cus_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
