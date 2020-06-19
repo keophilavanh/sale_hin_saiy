@@ -45,7 +45,7 @@ if(!empty($_POST))
         $qty =  $row["quality"] - $item_qty_clean;
         
         
-        $update_product="UPDATE `new_minimark`.`tb_product` SET `quality` = '".$qty."' WHERE `pro_barcode` = '".$item_code_clean."'";
+        $update_product="UPDATE `tb_product` SET `quality` = '".$qty."' WHERE `pro_barcode` = '".$item_code_clean."'";
         mysqli_query($connect, $update_product);
         
         

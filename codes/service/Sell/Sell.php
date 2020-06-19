@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../../css/fontawesome-all.min.css">
     <link rel="stylesheet" href="../../../css/bootadmin.min.css">
     <link rel="stylesheet" href="../../../css/datatables.min.css">
-    <link rel="stylesheet" href="../../../css/select2.css">
+    <!-- <link rel="stylesheet" href="../../../css/select2.css"> -->
     <link rel="stylesheet" href="../../../jq/jquery.datetimepicker.min.css"> 
     <link rel="stylesheet" href="../../../font-face/stylesheet.css">
 <!--    <link rel="stylesheet" href="../../css/fullcalendar.min.css"> -->
@@ -28,7 +28,7 @@
     <script src="../../../js/bootadmin.min.js"></script>
     <script src="../../../js/datatables.min.js"></script>
     <script src="../../../js/moment.min.js"></script>
-    <script src="../../../js/select2.js"></script>
+    <!-- <script src="../../../js/select2.js"></script> -->
     <script src="../../../js/sweetalert.min.js"></script>
     <script src="../../../jq/jquery.datetimepicker.full.js"></script>
  <!--    <script src="../../js/fullcalendar.min.js"></script> -->
@@ -526,10 +526,10 @@
                                         ticket = data;
                                     }
                                 });
-                               window.setTimeout(
-                                    function(){window.open('invoice/invoice.php?id='+ticket, '_blank')
-                                            window.location.replace('Sell.php')
-                                        }, 800);
+                            //    window.setTimeout(
+                            //         function(){window.open('invoice/invoice.php?id='+ticket, '_blank')
+                            //                 window.location.replace('Sell.php')
+                            //             }, 800);
                         
   
                         } else {
