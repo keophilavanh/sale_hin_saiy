@@ -526,10 +526,10 @@
                                         ticket = data;
                                     }
                                 });
-                            //    window.setTimeout(
-                            //         function(){window.open('invoice/invoice.php?id='+ticket, '_blank')
-                            //                 window.location.replace('Sell.php')
-                            //             }, 800);
+                               window.setTimeout(
+                                    function(){window.open('invoice/invoice.php?id='+ticket, '_blank')
+                                            window.location.replace('Sell.php')
+                                        }, 800);
                         
   
                         } else {

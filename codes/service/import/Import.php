@@ -260,10 +260,10 @@
 
                             
                             
-                               window.setTimeout(
-                                    function(){
-                                            window.location.replace('Purchase_list.php')
-                                        }, 800);
+                            //    window.setTimeout(
+                            //         function(){
+                            //                 window.location.replace('Purchase_list.php')
+                            //             }, 800);
                         
   
                         } else {}

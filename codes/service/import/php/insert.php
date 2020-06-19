@@ -24,6 +24,7 @@ if(!empty($_POST))
         $item_code = $_POST["item_code"];
         $item_name = $_POST["item_name"];
         $item_qty = $_POST["item_qty"];
+        $item_price = $_POST["item_price"];
        
         
         $query = '';
