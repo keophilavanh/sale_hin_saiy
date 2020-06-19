@@ -18,6 +18,7 @@
     OR cus_lname LIKE "%'.$_POST["search"]["value"].'%"
     OR cus_phone LIKE "%'.$_POST["search"]["value"].'%"
     OR cus_car_number LIKE "%'.$_POST["search"]["value"].'%"
+    OR cus_cart LIKE "%'.$_POST["search"]["value"].'%"
     OR cus_address LIKE "%'.$_POST["search"]["value"].'%"
     OR cus_id LIKE "%'.$_POST["search"]["value"].'%"
     
@@ -59,8 +60,10 @@ if ($total_count > 0){
         $sub_array[] = $row["cus_id"];
         $sub_array[] = $row["cus_fname"];
         $sub_array[] = $row["cus_lname"];
-        $sub_array[] = $row["cus_car_number"];
+        $sub_array[] = $row["cus_car_number"]; 
         $sub_array[] = $row["cus_phone"];
+        $sub_array[] = $row["cus_cart"]; 
+        
         $sub_array[] = $row["cus_address"];
         $sub_array[] = '
                         <a href="#" id="'.$row["cus_id"].'" class="btn btn-pill btn-primary edit_data" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-edit"></i></a> 
@@ -73,6 +76,7 @@ if ($total_count > 0){
 else{
 
         $sub_array = array();
+        $sub_array[] = " ";
         $sub_array[] = " ";
         $sub_array[] = " ";
         $sub_array[] = " ";

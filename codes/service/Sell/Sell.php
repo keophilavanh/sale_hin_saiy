@@ -74,13 +74,13 @@
                     
                 <div class="row mb-4" >
                             <div class="col-sm-3">
-                                <h5  id="Customer_name" >ຊື້ລູກຄ້າ : ລູກຄ້າທົ່ວໄປ </h5>
+                                <h5  id="Customer_name" >ຊື້ລູກຄ້າ : ບໍ່ມີຂໍ້ມູນ </h5>
                                 <button type="button" class="btn btn-success customer">ເລືອກລູກຄ້າ</button>
                             </div>
 
                             <div  class="col-sm-9">
                                 
-                                <input type="hidden" name="customer" class="form-control" id="Customer_id" value="3"  />
+                                <input type="hidden" name="customer" class="form-control" id="Customer_id" value=""  />
                             </div>
                 </div>
                    
@@ -470,8 +470,8 @@
                 if($('#Customer_id').val() == '')  
                     {  
                         swal({
-                            title: "ເລືອກວັນທີແຈ້ງເຕືອນ",
-                            text:   ' ວັນທີແຈ້ງເຕືອນການຈ່າຍຄ່າຮຽນ ບໍ່ມີຂໍ້ມູນ',
+                            title: "ເລືອກລູກກ່ອນຄ້າ",
+                           
                             icon: "warning",
                         });  
                 }
