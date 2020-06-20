@@ -5,7 +5,7 @@ if( $_SESSION['permission'] == "Admin"){
     
     $navbar = '
 
-    <div class="sidebar sidebar-dark bg-dark ">
+    <div class="sidebar sidebar-dark bg-primary ">
     <ul class="list-unstyled">
         
         <li>  
@@ -37,7 +37,7 @@ if( $_SESSION['permission'] == "Admin"){
    
     $navbar = '
 
-    <div class="sidebar sidebar-dark bg-dark ">
+    <div class="sidebar sidebar-dark bg-primary ">
     <ul class="list-unstyled">
         
         <li>  

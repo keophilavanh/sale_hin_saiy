@@ -41,7 +41,7 @@
     
 </head>
 <body class="bg-light" style="font-family: 'Phetsarath OT'">
-<nav class="navbar navbar-expand navbar-dark bg-dark shadow">
+<nav class="navbar navbar-expand navbar-dark bg-primary shadow">
     <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
     <a class="navbar-brand" href="#"><?php echo $_SESSION['system_name'];?></a>
 

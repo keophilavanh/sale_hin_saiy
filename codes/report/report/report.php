@@ -34,7 +34,7 @@
     
 </head>
 <body class="bg-light" style="font-family: 'Phetsarath OT'">
-<nav class="navbar navbar-expand navbar-dark bg-dark shadow">
+<nav class="navbar navbar-expand navbar-dark bg-primary shadow">
     <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
     <a class="navbar-brand" href="#"><?php echo $_SESSION['system_name'];?></a>
 
@@ -56,12 +56,12 @@
 
         
         <div class="row">
-            <div class="ml-3">
+            <!-- <div class="ml-3">
                 <button type="button" id="send_data" class="btn btn-primary  btn-lg "> <i class="fas fa-cloud-upload-alt"></i> ອັບໂຫລດຂໍ້ມູນ</button>
             </div> 
             <div id="loading" class="ml-3 p-2 d-none" >
                 <i class="fas fa-spinner fa-pulse fa-lg"></i> Loading...
-            </div> 
+            </div>  -->
             <div class="col-md-12 mt-3">
               <div class="card ">
                     <div class="card-header bg-white font-weight-bold">        
