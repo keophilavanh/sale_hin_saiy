@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 17, 2020 at 04:15 AM
+-- Generation Time: Jul 02, 2020 at 05:19 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -57,19 +57,19 @@ CREATE TABLE IF NOT EXISTS `tb_customer` (
   `cus_lname` varchar(25) DEFAULT NULL,
   `cus_phone` varchar(13) DEFAULT NULL,
   `cus_address` varchar(100) DEFAULT NULL,
-  `cus_car_number` varchar(6)  NULL,
-  `cus_cart` varchar(20) NULL,
+  `cus_car_number` varchar(6) DEFAULT NULL,
+  `cus_cart` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`cus_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_customer`
 --
 
-INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`, `cus_car_number`) VALUES
-(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad', '2222'),
-(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ', '7051'),
-(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ', '9999');
+INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`, `cus_car_number`, `cus_cart`) VALUES
+(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad', '2222', NULL),
+(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ', '7051', NULL),
+(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ', '9999', NULL);
 
 -- --------------------------------------------------------
 
@@ -147,6 +147,16 @@ CREATE TABLE IF NOT EXISTS `tb_import` (
   KEY `emp_id` (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_import`
+--
+
+INSERT INTO `tb_import` (`imp_id`, `imp_date`, `ord_id`, `emp_id`) VALUES
+(1, '2020-06-19 10:39:27', 1, 1),
+(2, '2020-06-19 13:23:49', 2, 1),
+(3, '2020-06-19 13:26:53', 1, 1),
+(4, '2020-06-19 13:28:22', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -161,6 +171,16 @@ CREATE TABLE IF NOT EXISTS `tb_import_detail` (
   KEY `imp_id` (`imp_id`),
   KEY `pro_barcode` (`pro_barcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_import_detail`
+--
+
+INSERT INTO `tb_import_detail` (`imp_id`, `pro_barcode`, `quality`) VALUES
+(1, '122', 100),
+(2, '122', 10),
+(3, '122', 100),
+(4, '122', 100);
 
 -- --------------------------------------------------------
 
@@ -182,6 +202,14 @@ CREATE TABLE IF NOT EXISTS `tb_order` (
   KEY `emp_id` (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_order`
+--
+
+INSERT INTO `tb_order` (`ord_id`, `ord_date`, `ord_status`, `sup_id`, `emp_id`, `Payment_status`, `import_status`) VALUES
+(1, '2020-06-19 10:38:31', 'ໃບສັ່ງຊື້', 1, 1, 'ຍັງຄ້າງຈ່າຍ', 'ຮັບສິນຄ້າແລ້ວ'),
+(2, '2020-06-19 13:23:34', 'ໃບສັ່ງຊື້', 2, 1, 'ຍັງຄ້າງຈ່າຍ', 'ຮັບສິນຄ້າແລ້ວ');
+
 -- --------------------------------------------------------
 
 --
@@ -198,6 +226,14 @@ CREATE TABLE IF NOT EXISTS `tb_order_detail` (
   KEY `ord_id` (`ord_id`),
   KEY `pro_barcode` (`pro_barcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_order_detail`
+--
+
+INSERT INTO `tb_order_detail` (`ord_id`, `pro_barcode`, `quality`, `price`, `total`) VALUES
+(1, '122', 100, 500, 50000),
+(2, '122', 10, 500, 5000);
 
 -- --------------------------------------------------------
 
@@ -220,6 +256,13 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
   KEY `uni_id` (`uni_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_product`
+--
+
+INSERT INTO `tb_product` (`pro_barcode`, `pro_name`, `quality`, `image`, `buy_price`, `sell_price`, `cat_id`, `uni_id`) VALUES
+('122', 'test', 86, NULL, 500, 5000, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -232,10 +275,27 @@ CREATE TABLE IF NOT EXISTS `tb_sell` (
   `sel_date` datetime NOT NULL,
   `cus_id` int(11) NOT NULL,
   `emp_id` int(11) NOT NULL,
+  `tax` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   PRIMARY KEY (`sel_id`),
   KEY `cus_id` (`cus_id`),
   KEY `emp_id` (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_sell`
+--
+
+INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`, `tax`, `total`, `amount`) VALUES
+(1, '2020-06-19 10:40:49', 3, 1, 0, 0, 0),
+(2, '2020-06-19 10:42:24', 3, 1, 0, 0, 0),
+(3, '2020-06-19 10:44:58', 3, 1, 0, 0, 0),
+(4, '2020-06-19 10:45:44', 3, 1, 0, 0, 0),
+(5, '2020-06-19 13:22:29', 2, 1, 0, 0, 0),
+(6, '2020-06-22 22:08:15', 3, 1, 0, 0, 0),
+(7, '2020-07-02 10:43:18', 3, 1, 1000, 11000, 10000),
+(8, '2020-07-02 10:45:08', 3, 1, 500, 5500, 5000);
 
 -- --------------------------------------------------------
 
@@ -253,6 +313,20 @@ CREATE TABLE IF NOT EXISTS `tb_sell_detail` (
   KEY `sel_id` (`sel_id`),
   KEY `pro_barcode` (`pro_barcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_sell_detail`
+--
+
+INSERT INTO `tb_sell_detail` (`sel_id`, `pro_barcode`, `quality`, `price`, `total`) VALUES
+(1, '122', 1, 5000, 5000),
+(2, '122', 1, 5000, 5000),
+(3, '122', 1, 5000, 5000),
+(4, '122', 1, 5000, 5000),
+(5, '122', 1, 5000, 5000),
+(6, '122', 1, 5000, 5000),
+(7, '122', 2, 5000, 10000),
+(8, '122', 1, 5000, 5000);
 
 -- --------------------------------------------------------
 
