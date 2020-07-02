@@ -19,6 +19,7 @@ if( $_SESSION['permission'] == "Admin"){
             <li><a href="../report_Purchase/report_Purchase.php"><i class="fas fa-chart-pie"></i> ລາຍງານການສັ່ງຊື້ສິນຄ້າ</a></li>
             <li><a href="../report_Import/report_Import.php"><i class="fas fa-chart-pie"></i> ລາຍງານການຮັບຊື້ສິນຄ້າ</a></li> 
             <li><a href="../report_payment/report_payment.php"><i class="fas fa-chart-pie"></i> ລາຍງານລາຍຈ່າຍ</a></li>
+            <li><a href="../report_all/report_all.php"><i class="fas fa-chart-pie"></i> ລາຍງານສະຫຼຸບລາຍຮັບລາຍຈ່າຍ</a></li>
 
         <!--    <li><div class="p-3"> <button type="button" id="send_inbox" class="btn btn-primary  btn-lg form-control"> <i class="fas fa-cloud-upload-alt"></i> ອັບໂຫລດຂໍ້ມູນ</button><div></li> -->
                         

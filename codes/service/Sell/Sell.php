@@ -164,7 +164,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ລາຄາລວມ</span>
                             </div>
-                            <input type="number" id="total_ticket"  class="form-control"  value="0"  style="text-align:right;" disabled>
+                            <input type="text" id="total_ticket"  class="form-control"  value="0"  style="text-align:right;" disabled>
                             <div class="input-group-append">
                                 <span class="input-group-text">ກີບ</span>
                             </div>
@@ -173,7 +173,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ອາກອນ</span>
                             </div>
-                            <input type="number" id="tax"  class="form-control"  value="0"  style="text-align:right;" >
+                            <input type="text" id="tax"  class="form-control"  value="0"  style="text-align:right;" disabled>
                             <div class="input-group-append">
                                 <span class="input-group-text">ກີບ</span>
                             </div>
@@ -182,7 +182,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ລວມເງີນ</span>
                             </div>
-                            <input type="number" id="total_amount" class="form-control"  value="0"  style="text-align:right;" disabled>
+                            <input type="text" id="total_amount" class="form-control"  value="0"  style="text-align:right;" disabled>
                             <div class="input-group-append">
                                 <span class="input-group-text">ກີບ</span>
                             </div>
@@ -329,8 +329,12 @@
                 var total_bill = $('#total_ticket').val();
                 var tax  ;
                 var total_amount ;
+
+                var tax_per =  localStorage.getItem("tax");
+
+
                 if(total_bill > 0){
-                     tax = total_bill/10 ;
+                     tax = total_bill * tax_per / 100 ;
                      total_amount = parseInt(total_bill, 10) +  parseInt(tax, 10);
                      console.log(total_bill);
                      
@@ -623,7 +627,18 @@
                     $('#Category').html(data);
                     }
                 })
-
+            
+            $.ajax({
+                    url:"../../manag/tax/php/fetch.php",
+                    method:"POST",
+                    dataType:"json",
+                    success:function(data){
+                       
+                      
+                       localStorage.setItem("tax", data.total);
+                   
+                    }
+                })
             $(document).on('click', '.Click_Category', function(){  
                 var id = $(this).attr("id");  
                 $.ajax({

@@ -18,6 +18,7 @@ $navbar = '
         <li><a href="../Customer/customer.php"><i class="fas fa-users"></i> ຈັດການຂໍ້ມູນລູກຄ້າ</a></li>
         <!--    <li><a href="../Expire_product/Expire_product.php"><i class="fas fa-history"></i> ຈັດການຂໍ້ມູນສິນຄ້າໝົດອາຍຸແລ້ວ</a></li> -->
         <li><a href="../Employee/Employee.php"><i class="fas fa-address-card"></i> ຈັດການຂໍ້ມູນພະນັກງານ</a></li>
+        <li><a href="../tax/tax.php"><i class="fas fa-percent"></i> ຈັດການຂໍ້ມູນກອນ</a></li>
                     
                   
         
