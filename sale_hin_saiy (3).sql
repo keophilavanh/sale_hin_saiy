@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 02, 2020 at 05:19 AM
+-- Generation Time: Jul 02, 2020 at 11:31 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
 --
 
 INSERT INTO `tb_product` (`pro_barcode`, `pro_name`, `quality`, `image`, `buy_price`, `sell_price`, `cat_id`, `uni_id`) VALUES
-('122', 'test', 86, NULL, 500, 5000, 1, 2);
+('122', 'test', 84, NULL, 500, 5000, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -295,7 +295,8 @@ INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`, `tax`, `total`,
 (5, '2020-06-19 13:22:29', 2, 1, 0, 0, 0),
 (6, '2020-06-22 22:08:15', 3, 1, 0, 0, 0),
 (7, '2020-07-02 10:43:18', 3, 1, 1000, 11000, 10000),
-(8, '2020-07-02 10:45:08', 3, 1, 500, 5500, 5000);
+(8, '2020-07-02 10:45:08', 3, 1, 500, 5500, 5000),
+(9, '2020-07-02 18:30:48', 3, 1, 200, 10200, 10000);
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,8 @@ INSERT INTO `tb_sell_detail` (`sel_id`, `pro_barcode`, `quality`, `price`, `tota
 (5, '122', 1, 5000, 5000),
 (6, '122', 1, 5000, 5000),
 (7, '122', 2, 5000, 10000),
-(8, '122', 1, 5000, 5000);
+(8, '122', 1, 5000, 5000),
+(9, '122', 2, 5000, 10000);
 
 -- --------------------------------------------------------
 
@@ -350,6 +352,26 @@ CREATE TABLE IF NOT EXISTS `tb_supplier` (
 INSERT INTO `tb_supplier` (`sup_id`, `sup_name`, `sup_phone`, `sup_address`) VALUES
 (1, 'ຮ້ານຈີນ', '55667788', 'ຫນ້າສະພະວິຊາ'),
 (2, 'ຮ້ານຫວຽດ', '99555666', 'ໂພນທັນ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_tax`
+--
+
+DROP TABLE IF EXISTS `tb_tax`;
+CREATE TABLE IF NOT EXISTS `tb_tax` (
+  `id` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_tax`
+--
+
+INSERT INTO `tb_tax` (`id`, `total`) VALUES
+(1, 2);
 
 -- --------------------------------------------------------
 
