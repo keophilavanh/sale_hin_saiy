@@ -52,6 +52,7 @@
                       <td align="center"><font size="9">'.number_format($row["tax"],0).' </font></td>
                       <td align="center" ><font size="9">'.number_format($row["total"],0).' </font> </td>
                       <td align="center" ><font size="9">'.number_format($row_pay["total"],0).' </font> </td>
+                      <td align="center" ><font size="9">'.number_format($row["amount"] - $row_pay["total"],0).' </font> </td>
                   </tr> ';
                 
 
@@ -92,7 +93,8 @@
                 <th   align="center">ລວມຍອດຂາຍ</th> 
                 <th   align="center">ອາກອນ</th> 
                 <th   align="center">ລວມເງີນໄດ້ຮັບ</th> 
-                <th   align="center">ລາຍຈ່າຍ</th>  
+                <th   align="center">ລາຍຈ່າຍ</th> 
+                <th   align="center">ກຳໄລ</th>  
                
            </tr> 
       ';
