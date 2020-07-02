@@ -25,15 +25,18 @@
       $result = mysqli_query($connect, $query);
       while($row = mysqli_fetch_array($result))
       {
-          $sql = "SELECT pro_name ,cat_name FROM tb_product p  INNER JOIN tb_category c ON p.cat_id = c.cat_id  Where pro_barcode ='".$row["pro_barcode"]."'";
+          $sql = "SELECT pro_name ,cat_name,uni_name FROM tb_product p  
+                         INNER JOIN tb_category c ON p.cat_id = c.cat_id   
+                         INNER JOIN tb_unit u ON p.uni_id = u.uni_id 
+                         Where pro_barcode ='".$row["pro_barcode"]."'";
           $result_name =  mysqli_fetch_array(mysqli_query($connect, $sql));
           
       $Detell .= '
                   <tr>
                      
                       <td><font size="9">'.$result_name["pro_name"].'</font></td>
-                      <td><font size="9">'.$result_name["cat_name"].'</font></td>
-                      <td align="center"><font size="9">'.$row["quality"].'</font></td>
+                      <td align="center"><font size="9">'.$result_name["cat_name"].'</font></td>
+                      <td align="center"><font size="9">'.$row["quality"].' '.$result_name["uni_name"].'</font></td>
                       <td align="right"><font size="9">'.number_format($row["price"],0).' </font></td>
                       <td align="right" ><font size="9">'.number_format($row["total"],0).' </font> </td>
                   </tr> ';
@@ -43,7 +46,7 @@
 
 
       
-      $sql_ticket = "SELECT s.sel_id as id,s.sel_date,c.cus_fname,c.cus_lname,c.cus_car_number,m.emp_fname,m.emp_lname
+      $sql_ticket = "SELECT s.sel_id as id,s.tax,s.amount,s.total,s.sel_date,c.cus_fname,c.cus_lname,c.cus_car_number,m.emp_fname,m.emp_lname
                           FROM tb_sell s
                           INNER JOIN tb_customer c ON s.cus_id = c.cus_id 
                           INNER JOIN tb_employee m ON s.emp_id = m.emp_id 
@@ -89,9 +92,9 @@
       
       <table border="1" cellspacing="0" cellpadding="3">  
            <tr>  
-                <th  width="40%" ><font size="10">ລານການສິນຄ້າ</font></th>  
-                <th  width="12%" align="center"><font size="10">ປະເພດ</font></th> 
-                <th  width="13%" align="center"><font size="10">ຈຳນວນ</font></th> 
+                <th  width="30%" ><font size="10">ລານການສິນຄ້າ</font></th>  
+                <th  width="17%" align="center"><font size="10">ປະເພດ</font></th> 
+                <th  width="18%" align="center"><font size="10">ຈຳນວນ</font></th> 
                 <th  width="20%" align="right"><font size="10">ລາຄາ</font></th>  
                 <th  width="20%" align="right"><font size="10">ລາຄາລວມ</font></th>  
            </tr> 
@@ -99,11 +102,23 @@
       $content .= $Detell;
       $content .='<tr>
                       <td rowspan="1" colspan="3"> </td>
-                      <td align="right"><font size="9">ລວມເງີນ</font></td>
-                      <td align="right"><font size="9">'.number_format($total_sum['total'],0).' ກີບ </font> </td>
+                      <td align="right"><font size="9">ລວມລາຄາ</font></td>
+                      <td align="right"><font size="9">'.number_format($result_ticket['amount'],0).' ກີບ </font> </td>
                     
       
                   </tr>'; 
+     $content .='<tr>
+                  <td rowspan="1" colspan="3" > </td>
+                  <td align="right"><font size="9">ອາກອນ</font></td>
+                  <td align="right"><font size="9">'.number_format($result_ticket['tax'],0).' ກີບ </font> </td>
+                
+  
+              </tr>'; 
+     $content .='<tr>
+              <td rowspan="1" colspan="3"> </td>
+              <td align="right"><font size="9">ລວມເງີນ</font></td>
+              <td align="right"><font size="9">'.number_format($result_ticket['total'],0).' ກີບ </font> </td>
+          </tr>'; 
       $content .='</table>  <BR/> <BR/> <BR/>';  
 
       $content .='<table border="0" cellspacing="0" cellpadding="3">  

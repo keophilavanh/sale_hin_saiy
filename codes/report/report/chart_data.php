@@ -7,13 +7,13 @@ include_once '../../../conn.php';
 
 function select_total_day($date_start,$date_end,$connect) {
 
-$sql = "SELECT sum(sd.total) as total
-        FROM tb_sell_detail sd
-            INNER JOIN tb_sell s ON s.sel_id = sd.sel_id
+$sql = "SELECT sum(total) as total
+        FROM tb_sell 
+           
         
 
-            Where s.sel_date >='".$date_start."' and 
-                s.sel_date <='".$date_end."'
+            Where sel_date >='".$date_start."' and 
+                sel_date <='".$date_end."'
 
         ";
 

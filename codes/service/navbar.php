@@ -4,7 +4,7 @@ $navbar="";
 if( $_SESSION['permission'] == "Admin"){
     $navbar = '
 
-<div class="sidebar sidebar-dark bg-primary ">
+<div id="menu" class="sidebar sidebar-dark bg-primary ">
 <ul class="list-unstyled">
     
     <li>  

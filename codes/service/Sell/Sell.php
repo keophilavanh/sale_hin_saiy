@@ -159,11 +159,30 @@
                     
                 </tr>
                 <tr >
-                    <td  ><div class="input-group mb-3">
+                    <td  >
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ລາຄາລວມ</span>
+                            </div>
+                            <input type="number" id="total_ticket"  class="form-control"  value="0"  style="text-align:right;" disabled>
+                            <div class="input-group-append">
+                                <span class="input-group-text">ກີບ</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ອາກອນ</span>
+                            </div>
+                            <input type="number" id="tax"  class="form-control"  value="0"  style="text-align:right;" >
+                            <div class="input-group-append">
+                                <span class="input-group-text">ກີບ</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ລວມເງີນ</span>
                             </div>
-                            <input type="text" id="total_ticket" class="form-control"  value="0"  style="text-align:right;" disabled>
+                            <input type="number" id="total_amount" class="form-control"  value="0"  style="text-align:right;" disabled>
                             <div class="input-group-append">
                                 <span class="input-group-text">ກີບ</span>
                             </div>
@@ -249,6 +268,8 @@
 
   
 <script>
+
+          
         $(document).ready(function () {
            
             $(document).on('click', '.back', function(){  
@@ -258,6 +279,30 @@
              $(document).on('click', '.customer', function(){  
                 $('#add_data_Modal').modal('show');
             });
+
+            $("#tax").keyup(function(){
+                
+                var total_bill = $('#total_ticket').val();
+                var tax =  $('#tax').val();
+                var  total_amount;
+                if(!tax){
+                    tax = 0;
+                    $('#tax').val(tax);
+                }
+                    total_amount = parseInt(total_bill, 10) +  parseInt(tax, 10);
+                    $('#total_amount').val(total_amount);
+              
+
+               
+              
+            });
+
+            
+
+           
+            
+            var element = document.getElementById("menu");
+            element.classList.add("toggled");
 
              var dataTable = $('#table_customer').DataTable({
                 "processing":true,
@@ -279,6 +324,28 @@
                
                 $('#add_data_Modal').modal('hide');  
             });
+
+            function tax(){
+                var total_bill = $('#total_ticket').val();
+                var tax  ;
+                var total_amount ;
+                if(total_bill > 0){
+                     tax = total_bill/10 ;
+                     total_amount = parseInt(total_bill, 10) +  parseInt(tax, 10);
+                     console.log(total_bill);
+                     
+                }else{
+                    tax = 0 ;
+                    total_amount = 0;
+                }
+               
+
+                $('#total_amount').val(total_amount);
+                $('#tax').val(tax);
+
+            }
+
+          
 
             
             
@@ -315,6 +382,7 @@
                         var total_price2 = parseInt(total_bill, 10);
                         var price = parseInt(data_price, 10);
                         $('#total_ticket').val(price + total_price2);
+                        tax();
                     
                     }
                 
@@ -337,6 +405,7 @@
                         var total_price = parseInt(total_bill, 10);
                         var price = parseInt(data_price, 10);
                         $('#total_ticket').val(price + total_price);
+                        tax();
                     
 
                 }
@@ -370,7 +439,7 @@
                             var total_price2 = parseInt(total_bill, 10);
                             price = parseInt(price, 10);
                             $('#total_ticket').val(price + total_price2);
-                          
+                            tax();
                         }
                     
                     }
@@ -399,7 +468,7 @@
                                 var total_price2 = parseInt(total_bill, 10);
                                 var price = parseInt(data.sell_price, 10);
                                 $('#total_ticket').val(price + total_price2);
-                                
+                                tax();
                                 
                 
                             }  
@@ -433,12 +502,12 @@
                             var total_ticket = parseInt(total_bill, 10);
                             var price = parseInt(data_price, 10);
                             $('#total_ticket').val(total_ticket-price);
-
+                            tax();
                             var price = document.getElementById("list_item").rows[i].cells.item(3).innerHTML;
                             var total_price = parseInt(price, 10);
                             document.getElementById("list_item").rows[i].cells.item(2).innerHTML=total_qty-1;
                             document.getElementById("list_item").rows[i].cells.item(4).innerHTML=(total_qty-1)*total_price;
-                            $('#list_item').append(html_code);
+                           // $('#list_item').append(html_code);
                             
                             
                            
@@ -453,14 +522,14 @@
                             $('#total_ticket').val(total_price-price);
 
                             $('#row' + delete_row).remove();
-
+                            tax();
                         }
                         
                     }
                 
                 }
                
-           
+                tax();
             });
 
             
@@ -492,7 +561,12 @@
                             swal("ສຳເລັດ ການດຳເນີນງານ", {
                             icon: "success",
                             });
+
+                               
                                 var Customer_id =  $('#Customer_id').val(); 
+                                var tax =  $('#tax').val(); 
+                                var ticket_total =  $('#total_ticket').val(); 
+                                var ticket_amount =  $('#total_amount').val(); 
                                 var item_code = [];
                                 var item_name = [];
                                 var item_qty = [];
@@ -519,7 +593,7 @@
                                 $.ajax({
                                     url:"php/insert.php",
                                     method:"POST",
-                                    data:{item_code:item_code,item_name:item_name,item_qty:item_qty,item_price:item_price,item_total_price,Customer_id:Customer_id},
+                                    data:{item_code:item_code,item_name:item_name,item_qty:item_qty,item_price:item_price,item_total_price,Customer_id:Customer_id,ticket_amount:ticket_amount,tax:tax,ticket_total:ticket_total},
                                     datatype:"text",
                                     success:function(data){
                                         

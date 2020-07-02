@@ -15,8 +15,8 @@ if(!empty($_POST))
         
         date_default_timezone_set("Asia/Bangkok");
       
-        $sql="INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`) 
-        VALUES ('".$data_id."', '".date("Y/m/d H:i:s")."', '".$_POST["Customer_id"]."', '".$_SESSION['user_id']."')";
+        $sql="INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`, `tax`, `total`, `amount`) 
+        VALUES ('".$data_id."', '".date("Y/m/d H:i:s")."', '".$_POST["Customer_id"]."', '".$_SESSION['user_id']."' , '".$_POST["tax"]."' , '".$_POST["ticket_amount"]."', '".$_POST["ticket_total"]."')";
 
         mysqli_query($connect, $sql);
 
