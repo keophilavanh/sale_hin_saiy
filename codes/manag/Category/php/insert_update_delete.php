@@ -4,7 +4,7 @@ include_once('../../../../conn.php');
 if(!empty($_POST))
 {
     if($_POST["status"]=='Insert'){
-        $query = "INSERT INTO `tb_category` ( `cat_name`) VALUES ( '".$_POST["UnitName"]."')";
+        $query = "INSERT INTO `tb_category` ( `cat_name`,`active`) VALUES ( '".$_POST["UnitName"]."',0)";
         
         mysqli_query($connect, $query);
     }

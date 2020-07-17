@@ -257,6 +257,36 @@
                 });  
             });
 
+            $(document).on('click', '.Active', function(){  
+                var employee_id = $(this).attr("id");  
+                var active = 0;  
+                $.ajax({  
+                    url:"php/active.php",  
+                    method:"POST",  
+                    data:{employee_id:employee_id,active:active},  
+                    dataType:"json",  
+                    success:function(data){  
+                       
+                    }  
+                });  
+                dataTable.ajax.reload(); 
+            });
+
+            $(document).on('click', '.No_Active', function(){  
+                var employee_id = $(this).attr("id");  
+                var active = 1;  
+                $.ajax({  
+                    url:"php/active.php",  
+                    method:"POST",  
+                    data:{employee_id:employee_id,active:active},  
+                    dataType:"json",  
+                    success:function(data){  
+                        
+                    }  
+                });  
+                dataTable.ajax.reload(); 
+            });
+
             $(document).on('click', '.delete_data', function(){  
                 var employee_id = $(this).attr("id");  
                 var status ='Delete';

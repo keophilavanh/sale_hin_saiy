@@ -3,7 +3,7 @@
  include_once '../../../../conn.php';
   
   
-    $query = "SELECT * FROM tb_category";  
+    $query = "SELECT * FROM tb_category Where active=1";  
     $result = mysqli_query($connect, $query);  
     $output='';
     while( $row =  mysqli_fetch_array($result)) {

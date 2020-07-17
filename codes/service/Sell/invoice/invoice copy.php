@@ -18,7 +18,7 @@
       
       $id_ticket = $_GET['id'];
       $Detell = '';
-     $count = 0;
+
 
       $query = "SELECT * FROM tb_sell_detail Where sel_id =".$id_ticket;
 
@@ -32,15 +32,14 @@
           $result_name =  mysqli_fetch_array(mysqli_query($connect, $sql));
           
       $Detell .= '
-               <font size="24">----------------------------</font><br/>
-               <font size="24">ລາຍການທີ : '.++$count.'</font> <br/>
-               <font size="24">----------------------------</font><br/>
-               <font size="24">ລາຍການສິນຄ້າ : '.$result_name["pro_name"].'</font> <br/>
-               <font size="24">ປະເພດ : '.$result_name["cat_name"].'</font><br/>
-               <font size="24">ຈຳນວນ : '.$row["quality"].' '.$result_name["uni_name"].'</font><br/>
-               <font size="24">ລາຄາ : '.number_format($row["price"],0).'</font><br/>
-               <font size="24">ລາຄາລວມ : '.number_format($row["total"],0).'</font><br/>
-          ';
+                  <tr>
+                     
+                      <td><font size="9">'.$result_name["pro_name"].'</font></td>
+                      <td align="center"><font size="9">'.$result_name["cat_name"].'</font></td>
+                      <td align="center"><font size="9">'.$row["quality"].' '.$result_name["uni_name"].'</font></td>
+                      <td align="right"><font size="9">'.number_format($row["price"],0).' </font></td>
+                      <td align="right" ><font size="9">'.number_format($row["total"],0).' </font> </td>
+                  </tr> ';
                 
 
       }
@@ -91,30 +90,40 @@
            </tr> 
       </table>
       
-      
+      <table border="1" cellspacing="0" cellpadding="3">  
+           <tr>  
+                <th  width="30%" ><font size="10">ລານການສິນຄ້າ</font></th>  
+                <th  width="17%" align="center"><font size="10">ປະເພດ</font></th> 
+                <th  width="18%" align="center"><font size="10">ຈຳນວນ</font></th> 
+                <th  width="20%" align="right"><font size="10">ລາຄາ</font></th>  
+                <th  width="20%" align="right"><font size="10">ລາຄາລວມ</font></th>  
+           </tr> 
       ';
       $content .= $Detell;
-      $content .='  
-                    <font size="24">----------------------------</font><br/>
-                    <font size="24">ລວມລາຄາ : '.number_format($result_ticket['amount'],0).' ກີບ </font><br/>
-                  
+      $content .='<tr>
+                      <td rowspan="1" colspan="3"> </td>
+                      <td align="right"><font size="9">ລວມລາຄາ</font></td>
+                      <td align="right"><font size="9">'.number_format($result_ticket['amount'],0).' ກີບ </font> </td>
+                    
       
-                 '; 
-     $content .='
-                 <font size="24">ອາກອນ : '.number_format($result_ticket['tax'],0).' ກີບ</font><br/>
-                 
-   
-              '; 
-     $content .='
-              <font size="24">ລວມເງີນ :'.number_format($result_ticket['total'],0).' ກີບ</font><br/>
-              <font size="24">----------------------------</font><br/>
-           '; 
-    
-     
+                  </tr>'; 
+     $content .='<tr>
+                  <td rowspan="1" colspan="3" > </td>
+                  <td align="right"><font size="9">ອາກອນ</font></td>
+                  <td align="right"><font size="9">'.number_format($result_ticket['tax'],0).' ກີບ </font> </td>
+                
+  
+              </tr>'; 
+     $content .='<tr>
+              <td rowspan="1" colspan="3"> </td>
+              <td align="right"><font size="9">ລວມເງີນ</font></td>
+              <td align="right"><font size="9">'.number_format($result_ticket['total'],0).' ກີບ </font> </td>
+          </tr>'; 
+      $content .='</table>  <BR/> <BR/> <BR/>';  
 
       $content .='<table border="0" cellspacing="0" cellpadding="3">  
                     <tr>  
-                         <td align="center"><font size="24">ບໍລິການແຮ່-ຊາຍ ແລະ ວົງດົນດີ</font></td>
+                         <td align="center"><font size="9">ບໍລິການແຮ່-ຊາຍ ແລະ ວົງດົນດີ</font></td>
                         
                          
                     </tr> 

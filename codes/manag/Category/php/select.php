@@ -54,8 +54,14 @@ if ($total_count > 0){
         $sub_array = array();
         $sub_array[] = $row["cat_id"];
         $sub_array[] = $row["cat_name"];
+        if($row["active"]){
+            $active = '<a href="#" id="'.$row["cat_id"].'" class="btn btn-pill btn-success Active"  title="Active"> Active </a>';
+        }else{
+            $active = '<a href="#" id="'.$row["cat_id"].'" class="btn btn-pill btn-danger No_Active"  title="Not Active"> Not Active </a>';
+        }
   
-        $sub_array[] = '
+        $sub_array[] =  $active.'
+
                         <a href="#" id="'.$row["cat_id"].'" class="btn btn-pill btn-primary edit_data" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-edit"></i></a> 
                         <a href="#" id="'.$row["cat_id"].'" class="btn btn-icon btn-pill btn-danger delete_data" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-trash"></i></a>';
        

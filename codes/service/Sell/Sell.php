@@ -309,8 +309,8 @@
                 "serverSide":true,
                 "order":[],
                 "ajax":{
-                url:"php/select_customer.php",
-                type:"POST"
+                    url:"php/select_customer.php",
+                    type:"POST"
                 }
 
             });
