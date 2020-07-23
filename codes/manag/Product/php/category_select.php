@@ -3,7 +3,7 @@
  include_once('../../../../conn.php');
   
   
-    $query = "SELECT * FROM tb_category ";  
+    $query = "SELECT * FROM tb_category WHERE tb_category.delete = '0'";  
     $result = mysqli_query($connect, $query);  
     $output='<option value="">ເລືອກ</option>';
     while( $row =  mysqli_fetch_array($result)) {

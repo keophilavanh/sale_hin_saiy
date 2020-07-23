@@ -20,8 +20,13 @@ if(!empty($_POST))
     }
     else if($_POST["status"]=='Delete')  
     {  
-            $query = "DELETE  FROM tb_product WHERE pro_barcode = '".$_POST["employee_id"]."'";  
+
+            $query="UPDATE `tb_product` SET `delete` = '1'
+
+            WHERE pro_barcode = '".$_POST["employee_id"]."'";  
             mysqli_query($connect, $query);
+            // $query = "DELETE  FROM tb_product WHERE pro_barcode = '".$_POST["employee_id"]."'";  
+            // mysqli_query($connect, $query);
             
             
     }

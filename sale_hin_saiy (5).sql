@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 17, 2020 at 03:22 AM
+-- Generation Time: Jul 23, 2020 at 03:09 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `tb_category` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(25) NOT NULL,
   `active` int(11) NOT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`cat_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -40,11 +41,11 @@ CREATE TABLE IF NOT EXISTS `tb_category` (
 -- Dumping data for table `tb_category`
 --
 
-INSERT INTO `tb_category` (`cat_id`, `cat_name`, `active`) VALUES
-(1, 'ເຂົ້າໜົມ', 1),
-(2, 'ມີ່ກ່ອງ', 1),
-(4, 'ເຄື່ອງດື່ມ', 0),
-(5, 'aaasdsd', 0);
+INSERT INTO `tb_category` (`cat_id`, `cat_name`, `active`, `delete`) VALUES
+(1, 'ເຂົ້າໜົມ', 1, 1),
+(2, 'ມີ່ກ່ອງ', 1, 0),
+(4, 'ເຄື່ອງດື່ມ', 1, 0),
+(5, 'aaasdsd', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `tb_customer` (
   `cus_address` varchar(100) DEFAULT NULL,
   `cus_car_number` varchar(6) DEFAULT NULL,
   `cus_cart` varchar(20) DEFAULT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`cus_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -68,10 +70,10 @@ CREATE TABLE IF NOT EXISTS `tb_customer` (
 -- Dumping data for table `tb_customer`
 --
 
-INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`, `cus_car_number`, `cus_cart`) VALUES
-(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad', '2222', NULL),
-(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ', '7051', NULL),
-(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ', '9999', NULL);
+INSERT INTO `tb_customer` (`cus_id`, `cus_fname`, `cus_lname`, `cus_phone`, `cus_address`, `cus_car_number`, `cus_cart`, `delete`) VALUES
+(1, 'ຄຳຫຼ້າ', 'ຫຼວງສາມາດ', '58566622', 'sad', '2222', NULL, 1),
+(2, 'ແມັດກີ້', 'ວັງວຽງ', '755555', 'ວັງວຽງ', '7051', NULL, 0),
+(3, 'ລູກຄ້າທົ່ວໄປ', ' ', ' ', ' ', '9999', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -89,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `tb_employee` (
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `permission` varchar(25) NOT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`emp_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -96,9 +99,9 @@ CREATE TABLE IF NOT EXISTS `tb_employee` (
 -- Dumping data for table `tb_employee`
 --
 
-INSERT INTO `tb_employee` (`emp_id`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_address`, `username`, `password`, `permission`) VALUES
-(1, 'ໂຊກໄຊ', 'ແກ້ວພິລາວັນ', '8552077452952', 'ບ້ານ ດອນກອຍ ເມືອງສີສັດຕະນາກ ນະຄອນຫຼວງວຽງຈັນ', 'Admin', 'Admin', 'Admin'),
-(2, 'ແມັກກີ້', 'ວັງວຽງ', '7777777', 'ວັງວຽງ', 'max', '12345', 'Employee');
+INSERT INTO `tb_employee` (`emp_id`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_address`, `username`, `password`, `permission`, `delete`) VALUES
+(1, 'ໂຊກໄຊ', 'ແກ້ວພິລາວັນ', '8552077452952', 'ບ້ານ ດອນກອຍ ເມືອງສີສັດຕະນາກ ນະຄອນຫຼວງວຽງຈັນ', 'Admin', 'Admin', 'Admin', 0),
+(2, 'ແມັກກີ້', 'ວັງວຽງ', '7777777', 'ວັງວຽງ', 'max', '12345', 'Employee', 1);
 
 -- --------------------------------------------------------
 
@@ -253,6 +256,7 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
   `sell_price` int(11) NOT NULL,
   `cat_id` int(11) NOT NULL,
   `uni_id` int(11) NOT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`pro_barcode`),
   KEY `cat_id` (`cat_id`),
   KEY `uni_id` (`uni_id`)
@@ -262,9 +266,9 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
 -- Dumping data for table `tb_product`
 --
 
-INSERT INTO `tb_product` (`pro_barcode`, `pro_name`, `quality`, `image`, `buy_price`, `sell_price`, `cat_id`, `uni_id`) VALUES
-('02', 'khanummun', -1, NULL, 2000, 20000, 4, 6),
-('122', 'test', 73, NULL, 500, 5000, 1, 2);
+INSERT INTO `tb_product` (`pro_barcode`, `pro_name`, `quality`, `image`, `buy_price`, `sell_price`, `cat_id`, `uni_id`, `delete`) VALUES
+('02', 'khanummun', -2, NULL, 2000, 20000, 2, 2, 0),
+('122', 'test', 71, NULL, 500, 5000, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -306,7 +310,9 @@ INSERT INTO `tb_sell` (`sel_id`, `sel_date`, `cus_id`, `emp_id`, `tax`, `total`,
 (13, '2020-07-17 09:37:42', 3, 2, 100, 5100, 5000),
 (14, '2020-07-17 09:48:28', 3, 2, 100, 5100, 5000),
 (15, '2020-07-17 09:54:23', 3, 2, 100, 5100, 5000),
-(16, '2020-07-17 10:02:46', 3, 2, 500, 25500, 25000);
+(16, '2020-07-17 10:02:46', 3, 2, 500, 25500, 25000),
+(17, '2020-07-17 23:26:23', 3, 1, 100, 5100, 5000),
+(18, '2020-07-18 08:46:35', 2, 1, 500, 25500, 25000);
 
 -- --------------------------------------------------------
 
@@ -346,7 +352,10 @@ INSERT INTO `tb_sell_detail` (`sel_id`, `pro_barcode`, `quality`, `price`, `tota
 (14, '122', 1, 5000, 5000),
 (15, '122', 1, 5000, 5000),
 (16, '122', 1, 5000, 5000),
-(16, '02', 1, 20000, 20000);
+(16, '02', 1, 20000, 20000),
+(17, '122', 1, 5000, 5000),
+(18, '122', 1, 5000, 5000),
+(18, '02', 1, 20000, 20000);
 
 -- --------------------------------------------------------
 
@@ -360,6 +369,7 @@ CREATE TABLE IF NOT EXISTS `tb_supplier` (
   `sup_name` varchar(25) NOT NULL,
   `sup_phone` varchar(13) DEFAULT NULL,
   `sup_address` varchar(100) DEFAULT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`sup_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -367,9 +377,9 @@ CREATE TABLE IF NOT EXISTS `tb_supplier` (
 -- Dumping data for table `tb_supplier`
 --
 
-INSERT INTO `tb_supplier` (`sup_id`, `sup_name`, `sup_phone`, `sup_address`) VALUES
-(1, 'ຮ້ານຈີນ', '55667788', 'ຫນ້າສະພະວິຊາ'),
-(2, 'ຮ້ານຫວຽດ', '99555666', 'ໂພນທັນ');
+INSERT INTO `tb_supplier` (`sup_id`, `sup_name`, `sup_phone`, `sup_address`, `delete`) VALUES
+(1, 'ຮ້ານຈີນ', '55667788', 'ຫນ້າສະພະວິຊາ', 1),
+(2, 'ຮ້ານຫວຽດ', '99555666', 'ໂພນທັນ', 0);
 
 -- --------------------------------------------------------
 
@@ -401,6 +411,7 @@ DROP TABLE IF EXISTS `tb_unit`;
 CREATE TABLE IF NOT EXISTS `tb_unit` (
   `uni_id` int(11) NOT NULL AUTO_INCREMENT,
   `uni_name` varchar(25) NOT NULL,
+  `delete` int(11) NOT NULL,
   PRIMARY KEY (`uni_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -408,12 +419,12 @@ CREATE TABLE IF NOT EXISTS `tb_unit` (
 -- Dumping data for table `tb_unit`
 --
 
-INSERT INTO `tb_unit` (`uni_id`, `uni_name`) VALUES
-(2, 'ແກ້ວ'),
-(3, 'ຕຸກ'),
-(4, 'ປ໋ອງ'),
-(5, 'ແພກ'),
-(6, 'ຖົງ');
+INSERT INTO `tb_unit` (`uni_id`, `uni_name`, `delete`) VALUES
+(2, 'ແກ້ວ', 0),
+(3, 'ຕຸກ', 0),
+(4, 'ປ໋ອງ', 0),
+(5, 'ແພກ', 1),
+(6, 'ຖົງ', 1);
 
 --
 -- Constraints for dumped tables

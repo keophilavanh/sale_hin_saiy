@@ -4,7 +4,7 @@
  include_once('../../../../conn.php');
  $columns = array('uni_id', 'uni_name');
  //$sql = "SELECT * FROM tbl_sample ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY ";
- $sql = "SELECT * FROM tb_unit ";
+ $sql = "SELECT * FROM tb_unit Where tb_unit.delete = '0'";
 
  
 
@@ -14,10 +14,10 @@
    
     
     
-    $sql .= ' WHERE uni_name LIKE "%'.$_POST["search"]["value"].'%" 
+    $sql .= ' AND ( uni_name LIKE "%'.$_POST["search"]["value"].'%" 
     OR uni_id LIKE "%'.$_POST["search"]["value"].'%"
     
-    ';
+    )';
 
  }
 

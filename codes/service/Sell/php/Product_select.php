@@ -3,7 +3,7 @@
  include_once '../../../../conn.php';
   
    
-    $query = "SELECT * FROM tb_product WHERE cat_id=".$_POST["id"];  
+    $query = "SELECT * FROM tb_product WHERE  tb_product.delete = '0' AND cat_id=".$_POST["id"];  
     $result = mysqli_query($connect, $query);  
     $output='';
     while( $row =  mysqli_fetch_array($result)) {

@@ -8,6 +8,8 @@
             from tb_product p 
             INNER JOIN tb_unit u ON p.uni_id = u.uni_id
             INNER JOIN tb_category c ON p.cat_id  = c.cat_id 
+
+            Where p.delete = '0'
            ";
 
  
@@ -18,10 +20,10 @@
    
     
     
-    $sql .= ' where p.pro_name LIKE "%'.$_POST["search"]["value"].'%" 
+    $sql .= ' AND( p.pro_name LIKE "%'.$_POST["search"]["value"].'%" 
     OR p.pro_barcode LIKE "%'.$_POST["search"]["value"].'%"
     
-    ';
+    )';
 
  }
 

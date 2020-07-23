@@ -4,7 +4,7 @@
  include_once('../../../../conn.php');
  $columns = array('emp_id', 'emp_fname','emp_lname','emp_phone','emp_address');
  //$sql = "SELECT * FROM tbl_sample ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY ";
- $sql = "SELECT * FROM tb_employee ";
+ $sql = "SELECT * FROM tb_employee  WHERE tb_employee.delete = '0'";
 
  
 
@@ -14,13 +14,13 @@
    
     
     
-    $sql .= ' WHERE emp_fname LIKE "%'.$_POST["search"]["value"].'%" 
+    $sql .= ' AND ( emp_fname LIKE "%'.$_POST["search"]["value"].'%" 
     OR emp_lname LIKE "%'.$_POST["search"]["value"].'%"
     OR emp_phone LIKE "%'.$_POST["search"]["value"].'%"
     OR emp_address LIKE "%'.$_POST["search"]["value"].'%"
     OR emp_id LIKE "%'.$_POST["search"]["value"].'%"
     
-    ';
+    )';
 
  }
 

@@ -19,8 +19,13 @@ if(!empty($_POST))
     }
     else if($_POST["status"]=='Delete')  
     {  
-            $query = "DELETE  FROM tb_supplier WHERE sup_id = '".$_POST["employee_id"]."'";  
+            $query="UPDATE `tb_supplier` SET `delete` = '1'
+
+            WHERE sup_id = '".$_POST["employee_id"]."'";  
             mysqli_query($connect, $query);
+
+            // $query = "DELETE  FROM tb_supplier WHERE sup_id = '".$_POST["employee_id"]."'";  
+            // mysqli_query($connect, $query);
             
             
     }

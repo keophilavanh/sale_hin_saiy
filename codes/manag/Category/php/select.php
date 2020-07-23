@@ -4,7 +4,7 @@
  include_once('../../../../conn.php');
  $columns = array('cat_id', 'cat_name');
  //$sql = "SELECT * FROM tbl_sample ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY ";
- $sql = "SELECT * FROM tb_category ";
+ $sql = "SELECT * FROM tb_category Where tb_category.delete = '0' ";
 
  
 
@@ -14,10 +14,10 @@
    
     
     
-    $sql .= ' WHERE cat_name LIKE "%'.$_POST["search"]["value"].'%" 
+    $sql .= ' AND ( cat_name LIKE "%'.$_POST["search"]["value"].'%" 
     OR cat_id LIKE "%'.$_POST["search"]["value"].'%"
     
-    ';
+    )';
 
  }
 

@@ -4,7 +4,7 @@
  $response;
  if(!empty($_POST)) 
  {  
-      $query = "SELECT * FROM tb_employee WHERE username ='".$_POST['Username']."' And password ='".$_POST['Password']."'";
+      $query = "SELECT * FROM tb_employee WHERE tb_employee.delete =0 And username ='".$_POST['Username']."' And password ='".$_POST['Password']."'";
       $result = mysqli_query($connect, $query);  
       $row=mysqli_fetch_array($result);  
       if($row != ''){
